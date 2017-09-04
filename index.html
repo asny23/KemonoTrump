@@ -1,17 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="utf-8">
   <title>けものトランプジェネレータ</title>
   <meta name="description" content="けものフレンズのアイコンでトランプを生成">
   <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="generator.js"></script>
+  <script src="router.js"></script>
 </head>
 
 <body>
 
   <canvas id="kemono_trump"></canvas>
+
+  <div id="select_form">
+    <form>
+      カード：
+      <select id="select_suit">
+        <option value="s">スペード</option>
+        <option value="h">ハート</option>
+        <option value="d">ダイヤ</option>
+        <option value="c">クラブ</option>
+      </select>
+      <select id="select_number">
+        <option value="01">A</option>
+        <option value="02">2</option>
+        <option value="03">3</option>
+        <option value="04">4</option>
+        <option value="05">5</option>
+        <option value="06">6</option>
+        <option value="07">7</option>
+        <option value="08">8</option>
+        <option value="09">9</option>
+        <option value="10">10</option>
+        <option value="11">J</option>
+        <option value="12">Q</option>
+        <option value="13">K</option>
+      </select>
+      <br /> フレンズ：
+      <select id="select_friends"></select>ちゃん
+      <br />
+      <input id="submit_button" type="button" value="たのしー！">
+    </form>
+  </div>
+
+  <div id="show_error">
+    <span>パラメータが不正です！</span>
+    <br />
+    <input id="reset_button" type="button" value="もどる！">
+  </div>
 
 </body>
 

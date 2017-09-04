@@ -8,19 +8,23 @@ var iconHeight = 320;
 var iconOffsetX = (cardWidth - iconWidth) / 2;
 var iconOffsetY = (cardHeight - iconHeight) / 2;
 
-window.addEventListener("load", function () {
+function drawCard(card, friends) {
   var canvas = document.getElementById("kemono_trump");
   canvas.width = cardWidth;
   canvas.height = cardHeight;
   var context = canvas.getContext("2d");
 
-  var cardImage = new Image(cardSourceWidth, cardSourceHeight);
-  cardImage.src = 'resources/card/c01.svg';
-  var iconImage = new Image(iconWidth, iconHeight);
-  iconImage.src = 'resources/icon/sa-baru.jpg';
+  var cardImage = new Image();
+  var iconImage = new Image();
 
-  context.scale(cardScale, cardScale);
-  context.drawImage(cardImage, 0, 0);
-  context.scale(1 / cardScale, 1 / cardScale);
-  context.drawImage(iconImage, iconOffsetX, iconOffsetY);
-}, false);
+  cardImage.src = 'resources/card/' + card + '.svg';
+  cardImage.addEventListener('load', function () {
+    context.drawImage(cardImage, 0, 0, cardWidth, cardHeight);
+
+    iconImage.src = 'resources/icon/' + friends + '.jpg';
+    iconImage.addEventListener('load', function () {
+      console.log('draw icon ' + iconImage.src);
+      context.drawImage(iconImage, iconOffsetX, iconOffsetY);
+    });
+  });
+}
