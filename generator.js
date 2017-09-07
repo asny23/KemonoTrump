@@ -23,7 +23,6 @@ function drawCard(card, friends) {
 
     iconImage.src = 'resources/icon/' + friends + '.jpg';
     iconImage.addEventListener('load', function () {
-      console.log('draw icon ' + iconImage.src);
       context.drawImage(iconImage, iconOffsetX, iconOffsetY);
     });
   });
